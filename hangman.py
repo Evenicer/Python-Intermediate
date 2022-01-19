@@ -12,7 +12,7 @@ def read_Data():
 
 def get_word():
     words = read_Data()
-    pos_random = random.randint(1,100)
+    pos_random = random.randint(1,len(words))
 
     #palabra a buscar
     word = words[pos_random]
@@ -22,25 +22,29 @@ def get_word():
 
 def play():
     os.system("cls")
+
     word = get_word()
     print(word)
-    word_user = ""
-    word_ui = len(word)*" _ "
 
-    while len(word_user) != len(word):
-        print("Your try: " + word_ui)
-        word_user = word_user + input("Ingresa una letra: ")
+    word_user = []
+    word2 = []
+    word_ui = list(len(word)*"_")
+
+    while len(word2) != len(word):
+        print("Your try: ")
+        print(word_ui)
+
+        word_user = input("Enter a letter: ")
 
         for i in range(len(word)):
             if word_user == word[i]:
-                pass
-                
-                
-        os.system("cls")        
-        
-    
-    if word_user == word:
-        print("Ganaste! La palabra era: "+word)
+                word_ui[i] = word_user
+                word2.append(word_user)
+        os.system("cls")    
+
+    print("Your try: ")
+    print(word_ui)            
+    print("You win! The word was: "+word)
 
 
 
